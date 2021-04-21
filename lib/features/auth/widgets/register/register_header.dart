@@ -27,7 +27,6 @@ class RegisterHeader extends StatelessWidget {
         children: <Widget>[
           Text(
             Constants.register,
-            
             style: GoogleFonts.rubik(
               fontSize: 35.0,
               fontWeight: FontWeight.w700,

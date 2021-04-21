@@ -17,7 +17,4 @@ class MediaService {
 
     return File(_pickedFile!.path);
   }
-
-
-  
 }

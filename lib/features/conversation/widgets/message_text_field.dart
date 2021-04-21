@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 /// Message Text Field
@@ -18,16 +19,16 @@ class MessageTextField extends StatefulWidget {
   final double deviceWidth;
 
   /// OnChanged Callback
-  Function(String)? onChanged;
+  final Function(String)? onChanged;
 
   /// controller
   final TextEditingController controller;
 
   /// onEditingComplete
-  Function()? onEditingComplete;
+  final Function()? onEditingComplete;
 
   /// Focus Node
-  FocusNode focusNode;
+  final FocusNode focusNode;
 
   @override
   _MessageTextFieldState createState() => _MessageTextFieldState();

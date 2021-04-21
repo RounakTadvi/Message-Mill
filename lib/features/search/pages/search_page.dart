@@ -1,12 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+// Project imports:
 import 'package:message_mill/features/conversation/pages/conversation_page.dart';
 import 'package:message_mill/features/conversation/widgets/user_avatar_widget.dart';
 import 'package:message_mill/models/contact.dart';
 import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';
-import 'package:provider/provider.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 /// Search Page
 class SearchPage extends StatefulWidget {

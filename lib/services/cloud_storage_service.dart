@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 
 // Package imports:
 import 'package:firebase_storage/firebase_storage.dart';
-
 import 'package:path/path.dart';
 
 /// Cloud Storage Service

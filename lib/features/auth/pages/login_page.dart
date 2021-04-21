@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:message_mill/services/database_service.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-import 'package:message_mill/core/platform_widgets/platform_alert_dialog.dart';
+
 import 'package:message_mill/features/auth/widgets/login/email_text_field.dart';
 import 'package:message_mill/features/auth/widgets/login/login_header.dart';
 import 'package:message_mill/features/auth/widgets/login/password_text_field.dart';
 import 'package:message_mill/features/auth/widgets/login/register_button.dart';
+import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';
 import '../../../services/snack_bar_service.dart';
 import '../../shared/spacers.dart';
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    SnackBarService.instance.buildContext = context;
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Align(

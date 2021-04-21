@@ -1,11 +1,13 @@
 // Flutter imports:
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 // Project imports:
 import 'package:message_mill/features/conversation/widgets/user_avatar_widget.dart';
 import 'package:message_mill/models/message.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 /// Recent Conversation List Tile
 class RecentConversationListTile extends StatelessWidget {

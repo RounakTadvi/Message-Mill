@@ -1,5 +1,8 @@
+// Package imports:
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+
+// Project imports:
 import 'package:message_mill/models/message.dart';
 
 /// Conversation Snippet (Sub-collection in Users Collection)

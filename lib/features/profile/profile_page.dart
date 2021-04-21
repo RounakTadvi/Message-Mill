@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:message_mill/core/platform_widgets/platform_alert_dialog.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
@@ -149,7 +150,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget _buildLogoutButton() {
-    final AuthBase _auth = Provider.of<AuthBase>(context, listen: false);
     return Container(
       height: widget.deviceHeight * 0.06,
       width: widget.deviceWidth * 0.80,
@@ -202,56 +202,4 @@ class _ProfilePageState extends State<ProfilePage> {
       await _signOut(context);
     }
   }
-}
-
-/// Show Platform Alert Dialog
-Future<bool?> showPlatformAlertDialog(BuildContext context,
-    {required String title,
-    required String content,
-    required String defaultActionText,
-    String? cancelActionText,
-    bool isDestructiveActionIOS = false}) async {
-  if (kIsWeb || !Platform.isIOS) {
-    return showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: <Widget>[
-          if (cancelActionText != null)
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: Text(cancelActionText),
-            ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text(defaultActionText),
-          ),
-        ],
-        elevation: 4.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4.0),
-        ),
-      ),
-    );
-  }
-  return showCupertinoDialog(
-    context: context,
-    builder: (BuildContext context) => CupertinoAlertDialog(
-      title: Text(title),
-      content: Text(content),
-      actions: <Widget>[
-        if (cancelActionText != null)
-          CupertinoDialogAction(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: Text(cancelActionText),
-          ),
-        CupertinoDialogAction(
-          onPressed: () => Navigator.of(context).pop(true),
-          isDestructiveAction: isDestructiveActionIOS,
-          child: Text(defaultActionText),
-        ),
-      ],
-    ),
-  );
 }

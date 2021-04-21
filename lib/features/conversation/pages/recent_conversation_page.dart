@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:message_mill/features/conversation/pages/conversation_page.dart';
-import 'package:message_mill/models/conversation_snippet.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:message_mill/features/conversation/pages/conversation_page.dart';
 import 'package:message_mill/features/conversation/widgets/recent_conversation_list_tile.dart';
-
+import 'package:message_mill/models/conversation_snippet.dart';
 import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';
 
@@ -67,7 +66,6 @@ class RecentConversationPage extends StatelessWidget {
                               receiverID: data[i].id,
                               receiverImage: data[i].image,
                               receiverName: data[i].name,
-                              
                             ),
                           ),
                         );
@@ -80,12 +78,12 @@ class RecentConversationPage extends StatelessWidget {
                     );
                   },
                 )
-              :const Center(
-                child:  Text(
+              : const Center(
+                  child: Text(
                     'No Conversations Yet!',
                     style: TextStyle(color: Colors.white30, fontSize: 15.0),
                   ),
-              );
+                );
         } else {
           return const Center(
             child: CircularProgressIndicator(),

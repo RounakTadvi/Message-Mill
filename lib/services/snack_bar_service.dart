@@ -3,15 +3,9 @@ import 'package:flutter/material.dart';
 
 /// Snack Bar Service
 class SnackBarService {
-  late BuildContext _buildContext;
-
+  
   /// Snack Bar Servixe Singleton Instance
   static SnackBarService instance = SnackBarService();
-
-  /// Build Context
-  set buildContext(BuildContext context) {
-    _buildContext = context;
-  }
 
   /// Show SnackBar Error
   void showSnackBarError(BuildContext context, String message) {

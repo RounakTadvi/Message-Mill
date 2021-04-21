@@ -1,11 +1,19 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:io';
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
+
+// Project imports:
 import 'package:message_mill/features/conversation/widgets/message_text_field.dart';
 import 'package:message_mill/features/conversation/widgets/user_avatar_widget.dart';
 import 'package:message_mill/models/conversation.dart';
@@ -14,8 +22,6 @@ import 'package:message_mill/services/cloud_storage_service.dart';
 import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';
 import 'package:message_mill/services/media_service.dart';
-import 'package:provider/provider.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 /// Conversation Page (Chat Window)
 class ConversationPage extends StatefulWidget {
@@ -31,7 +37,6 @@ class ConversationPage extends StatefulWidget {
         );
 
   /// Chat ID
-
   final String chatID;
 
   /// Receiver ID
@@ -89,7 +94,10 @@ class _ConversationPageState extends State<ConversationPage> {
       clipBehavior: Clip.antiAlias,
       children: <Widget>[
         _buildMessageBody(),
-        Align(alignment: Alignment.bottomCenter, child: _buildMessageTF()),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: _buildMessageTF(),
+        ),
       ],
     );
   }
@@ -119,13 +127,6 @@ class _ConversationPageState extends State<ConversationPage> {
               child: Text('Something went wrong'),
             );
           }
-          // if (conversation == null) {
-          //   return const Center(
-          //     child: Text(
-          //       'No Messages Yet!',
-          //     ),
-          //   );
-          // }
           if (conversation != null) {
             debugPrint(conversation.toString());
             if (conversation.messages!.isNotEmpty) {

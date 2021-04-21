@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:message_mill/features/home/home_page.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:message_mill/core/constants/constants.dart';
-import 'package:message_mill/core/platform_widgets/platform_exception_alert_dialog.dart';
+
 import 'package:message_mill/features/auth/widgets/register/register_header.dart';
+import 'package:message_mill/features/home/home_page.dart';
 import 'package:message_mill/features/shared/spacers.dart';
 import 'package:message_mill/services/cloud_storage_service.dart';
 import 'package:message_mill/services/database_service.dart';
@@ -255,7 +255,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 _email,
                 _pass,
               );
-              
+
               if (user != null) {
                 final TaskSnapshot? _result =
                     await CloudStorageService.instance.uploadUserImage(
@@ -278,11 +278,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   );
                 }
               }
-            }else{
+            } else {
               SnackBarService.instance.showSnackBarError(
-              context,
-              'Kindly select an image',
-            );
+                context,
+                'Kindly select an image',
+              );
             }
           } on SocketException {
             SnackBarService.instance.showSnackBarError(
