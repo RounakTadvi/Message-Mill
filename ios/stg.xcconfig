@@ -1,0 +1,12 @@
+//
+//  stg.xcconfig
+//  Runner
+//
+//  Created by Rounak Tadvi on 16/04/21.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Generated.xcconfig"
+FLUTTER_TARGET=lib/main_stg.dart
+bundle_suffix = .stg
