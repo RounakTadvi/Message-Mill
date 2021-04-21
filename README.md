@@ -6,10 +6,6 @@ Developed a Flutter Chat Application using Firebase 🔥 Backend.
 
 ---
 
-## Getting Started 🎸
-
----
-
 ## Getting Started  🎸
 
 This project contains 3 flavors:
