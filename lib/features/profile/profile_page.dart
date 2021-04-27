@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:message_mill/core/platform_widgets/platform_alert_dialog.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:message_mill/core/platform_widgets/platform_alert_dialog.dart';
 import 'package:message_mill/models/contact.dart';
 import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';

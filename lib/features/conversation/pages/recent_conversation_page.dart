@@ -38,10 +38,10 @@ class RecentConversationPage extends StatelessWidget {
   }
 
   Widget _buildPage(BuildContext context) {
-    final User? user =
+    final User? currentUser =
         Provider.of<AuthBase>(context, listen: false).currentUser;
     return StreamBuilder<List<ConversationSnippet>?>(
-      stream: DBService.instance.getUserConversations(user?.uid),
+      stream: DBService.instance.getUserConversations(currentUser?.uid),
       builder: (BuildContext context,
           AsyncSnapshot<List<ConversationSnippet>?> snapshot) {
         final List<ConversationSnippet>? data = snapshot.data;
@@ -58,6 +58,13 @@ class RecentConversationPage extends StatelessWidget {
                   itemBuilder: (BuildContext context, int i) {
                     //debugPrint(data.toString());
                     return RecentConversationListTile(
+                      onLongPress: () {
+                        DBService.instance.deleteConversation(
+                          data[i].conversationID,
+                          data[i].lastMessage != null ? currentUser?.uid : null,
+                          data[i].id,
+                        );
+                      },
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute<void>(

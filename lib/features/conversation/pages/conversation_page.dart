@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 
 // Flutter imports:
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -10,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:message_mill/features/conversation/pages/image_message_page.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -84,6 +86,19 @@ class _ConversationPageState extends State<ConversationPage> {
         backgroundColor: const Color.fromRGBO(31, 31, 31, 1.0),
         title: Text(name),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(CupertinoIcons.delete),
+            onPressed: () {
+              DBService.instance.deleteConversation(
+                chatID,
+                Provider.of<AuthBase>(context, listen: false).currentUser!.uid,
+                widget.receiverID,
+              );
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       ),
       body: _buildConversationPage(),
     );
@@ -257,39 +272,48 @@ class _ConversationPageState extends State<ConversationPage> {
       image: CachedNetworkImageProvider(imageUrl),
       fit: BoxFit.cover,
     );
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            15.0,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (_) => ImageMessagePage(imageUrl: imageUrl),
           ),
-          gradient: LinearGradient(
-            colors: _colorScheme,
-            stops: <double>[0.30, 0.70],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          )),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          Container(
-            height: _deviceHeight * 0.30,
-            width: _deviceWidth * 0.40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              image: _image,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              15.0,
             ),
-          ),
-          if (timeStamp != null)
-            Text(
-              timeago.format(timeStamp.toDate()),
-              style: const TextStyle(
-                color: Colors.white70,
+            gradient: LinearGradient(
+              colors: _colorScheme,
+              stops: <double>[0.30, 0.70],
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+            )),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Container(
+              height: _deviceHeight * 0.30,
+              width: _deviceWidth * 0.40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: _image,
               ),
             ),
-        ],
+            if (timeStamp != null)
+              Text(
+                timeago.format(timeStamp.toDate()),
+                style: const TextStyle(
+                  color: Colors.white70,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

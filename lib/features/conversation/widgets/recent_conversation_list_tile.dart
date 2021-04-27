@@ -19,6 +19,7 @@ class RecentConversationListTile extends StatelessWidget {
     required this.avatarUrl,
     required this.lastSeen,
     required this.type,
+    required this.onLongPress,
     Key? key,
   }) : super(
           key: key,
@@ -41,10 +42,15 @@ class RecentConversationListTile extends StatelessWidget {
 
   /// Message Type
   final MessageType type;
+
+  /// On Long Press Callback
+  final Function()? onLongPress;
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: onLongPress,
       onTap: onTap,
+    
       title: Text(name),
       subtitle: type == MessageType.text
           ? Text(lastMessage)

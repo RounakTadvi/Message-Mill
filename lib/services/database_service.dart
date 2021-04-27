@@ -141,8 +141,8 @@ class DBService {
   /// Create Or Get Conversartion
   Future<void> createOrGetConversartion(String currentID, String recepientID,
       Future<void> Function(String _conversationID) _onSuccess) async {
-    CollectionReference _ref = _db.collection(_conversationsCollection);
-    CollectionReference _userConversationRef = _db
+    final CollectionReference _ref = _db.collection(_conversationsCollection);
+    final CollectionReference _userConversationRef = _db
         .collection(_userCollection)
         .doc(currentID)
         .collection(_conversationsCollection);
@@ -162,6 +162,40 @@ class DBService {
         );
         return _onSuccess(_conversationRef.id);
       }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  /// Delete a User Conversation
+  Future<void> deleteConversation(
+      String chatId, String? currentUserID, String receipentUserId) async {
+    debugPrint(
+        // ignore: lines_longer_than_80_chars
+        'Chat Id: $chatId, CurrentUserId: $currentUserID,receipentUserId: $receipentUserId');
+    final CollectionReference _conversationsCollectionRef =
+        _db.collection(_conversationsCollection);
+    final CollectionReference _userCollectionRef =
+        _db.collection(_userCollection);
+    try {
+      await _conversationsCollectionRef.doc(chatId).delete().then(
+          (_) => debugPrint('$chatId in Conversations Collection deleted'));
+      await _userCollectionRef
+          .doc(currentUserID)
+          .collection(_conversationsCollection)
+          .doc(receipentUserId)
+          .delete()
+          .then((_) => debugPrint(
+              '$chatId in User\'s Conversations Collection deleted'));
+      await _userCollectionRef
+          .doc(receipentUserId)
+          .collection(_conversationsCollection)
+          .doc(currentUserID)
+          .delete()
+          .then(
+            (_) => debugPrint(
+                '''$chatId in User\'s Conversations Collection deleted for receipednt'''),
+          );
     } catch (e) {
       debugPrint(e.toString());
     }

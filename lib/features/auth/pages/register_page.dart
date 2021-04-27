@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:message_mill/core/constants/constants.dart';
-
 import 'package:message_mill/features/auth/widgets/register/register_header.dart';
 import 'package:message_mill/features/home/home_page.dart';
 import 'package:message_mill/features/shared/spacers.dart';
@@ -271,11 +270,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     imageUrl: imgUrl,
                   );
                   await DBService.instance.updateUserLastSeen(user.uid);
-                  await Navigator.of(context).pushReplacement(
-                    MaterialPageRoute<void>(
-                      builder: (_) => const HomePage(),
-                    ),
-                  );
+                  // await Navigator.of(context).pushReplacement(
+                  //   MaterialPageRoute<void>(
+                  //     builder: (_) => const HomePage(),
+                  //   ),
+                  // );
                 }
               }
             } else {

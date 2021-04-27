@@ -10,7 +10,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
-
 import 'package:message_mill/features/auth/widgets/login/email_text_field.dart';
 import 'package:message_mill/features/auth/widgets/login/login_header.dart';
 import 'package:message_mill/features/auth/widgets/login/password_text_field.dart';
@@ -19,6 +18,9 @@ import 'package:message_mill/services/database_service.dart';
 import 'package:message_mill/services/firebase_auth_service.dart';
 import '../../../services/snack_bar_service.dart';
 import '../../shared/spacers.dart';
+
+// Project imports:
+
 
 /// Login Page
 class LoginPage extends StatefulWidget {
