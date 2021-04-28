@@ -90,7 +90,7 @@ class EmailTF extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PlatformTextField(
+    return TextField(
       onChanged: onChanged,
       controller: emailController,
       autocorrect: false,
@@ -98,8 +98,7 @@ class EmailTF extends StatelessWidget {
         color: Colors.white,
       ),
       cursorColor: Colors.white,
-      material: (_, __) => MaterialTextFieldData(
-        decoration: const InputDecoration(
+      decoration: const InputDecoration(
           hintText: Constants.emailHintText,
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
@@ -107,7 +106,6 @@ class EmailTF extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

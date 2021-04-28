@@ -11,11 +11,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:message_mill/features/conversation/pages/image_message_page.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 // Project imports:
+import 'package:message_mill/features/conversation/pages/image_message_page.dart';
 import 'package:message_mill/features/conversation/widgets/message_text_field.dart';
 import 'package:message_mill/features/conversation/widgets/user_avatar_widget.dart';
 import 'package:message_mill/models/conversation.dart';

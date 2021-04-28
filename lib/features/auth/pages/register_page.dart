@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:message_mill/features/home/home_page.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
 import 'package:message_mill/core/constants/constants.dart';
 import 'package:message_mill/features/auth/widgets/register/register_header.dart';
-import 'package:message_mill/features/home/home_page.dart';
 import 'package:message_mill/features/shared/spacers.dart';
 import 'package:message_mill/services/cloud_storage_service.dart';
 import 'package:message_mill/services/database_service.dart';
@@ -270,11 +270,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     imageUrl: imgUrl,
                   );
                   await DBService.instance.updateUserLastSeen(user.uid);
-                  // await Navigator.of(context).pushReplacement(
-                  //   MaterialPageRoute<void>(
-                  //     builder: (_) => const HomePage(),
-                  //   ),
-                  // );
+                  await Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute<void>(
+                        builder: (_) => const HomePage(),
+                      ),
+                      (Route<dynamic> route) => false);
                 }
               }
             } else {

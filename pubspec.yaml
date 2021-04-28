@@ -24,14 +24,14 @@ dependencies:
   flutter:
     sdk: flutter
   cached_network_image: ^3.0.0
-  cloud_firestore: ^1.0.6
+  cloud_firestore: ^1.0.7
   cupertino_icons: ^1.0.2
   equatable: ^2.0.0
-  firebase_auth: ^1.1.1
-  firebase_core: ^1.0.4
-  firebase_storage: ^8.0.4
-  flutter_platform_widgets: ^1.2.0
-  flutter_svg: ^0.21.0+1
+  firebase_auth: ^1.1.2
+  firebase_core: ^1.1.0
+  firebase_storage: ^8.0.5
+  flutter_platform_widgets: ^1.4.1
+  flutter_svg: ^0.22.0
   google_fonts: ^2.0.0
   image_picker: ^0.7.4
   provider: ^5.0.0

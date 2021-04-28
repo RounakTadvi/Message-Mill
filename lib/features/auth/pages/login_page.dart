@@ -21,7 +21,6 @@ import '../../shared/spacers.dart';
 
 // Project imports:
 
-
 /// Login Page
 class LoginPage extends StatefulWidget {
   /// Constructor

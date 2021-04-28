@@ -1,5 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
 
 /// Image Message Page
 class ImageMessagePage extends StatelessWidget {
@@ -22,9 +25,7 @@ class ImageMessagePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: CachedNetworkImageProvider(imageUrl),
-            fit: BoxFit.contain
-          ),
+              image: CachedNetworkImageProvider(imageUrl), fit: BoxFit.contain),
         ),
       ),
     );

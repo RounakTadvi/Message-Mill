@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 /// Snack Bar Service
 class SnackBarService {
-  
   /// Snack Bar Servixe Singleton Instance
   static SnackBarService instance = SnackBarService();
 

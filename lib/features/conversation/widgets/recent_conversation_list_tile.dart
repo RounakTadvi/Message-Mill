@@ -50,7 +50,6 @@ class RecentConversationListTile extends StatelessWidget {
     return ListTile(
       onLongPress: onLongPress,
       onTap: onTap,
-    
       title: Text(name),
       subtitle: type == MessageType.text
           ? Text(lastMessage)

@@ -30,11 +30,10 @@ class App extends StatelessWidget {
           create: (_) => FirebaseAuthService(),
         )
       ],
-      child: PlatformApp(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: Provider.of<String>(context, listen: false),
-        material: (_, __) => MaterialAppData(
-          theme: Palette.appTheme,
-        ),
+        theme: Palette.appTheme,
         home: const LandingPage(),
       ),
     );

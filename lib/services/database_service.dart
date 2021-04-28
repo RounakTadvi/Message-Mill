@@ -53,11 +53,13 @@ class DBService {
   Stream<Contact?> getUserData(String? userID) {
     final DocumentReference ref = _db.collection(_userCollection).doc(userID);
     return ref.get().asStream().map(
-          (DocumentSnapshot snapshot) => Contact.fromFirestore(snapshot),
+          (DocumentSnapshot snapshot) {
+            return Contact.fromFirestore(snapshot);
+          },
         );
   }
 
-  /// Get Current User's Conversation
+  /// Get Current/Recent User's Conversation
   Stream<List<ConversationSnippet>> getUserConversations(String? userID) {
     final CollectionReference ref = _db
         .collection(_userCollection)
