@@ -7,7 +7,7 @@ class Palette {
   static ThemeData appTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: const Color.fromRGBO(42, 117, 188, 1),
-    accentColor: const Color.fromRGBO(42, 117, 188, 1),
+    // accentColor: const Color.fromRGBO(42, 117, 188, 1),
     backgroundColor: const Color.fromRGBO(28, 27, 27, 1),
   );
 }
